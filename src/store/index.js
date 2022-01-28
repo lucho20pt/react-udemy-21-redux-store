@@ -4,8 +4,10 @@ const initialState = {
   counter: 0,
 };
 
-const counterReducer = (state = initialState, action) => {
-  switch (action.type) {
+const counterReducer = (state = initialState, { type, payload }) => {
+  
+  // rxreducer
+  switch (type) {
     case "increment":
       return {
         counter: state.counter + 1,
@@ -14,12 +16,15 @@ const counterReducer = (state = initialState, action) => {
       return {
         counter: state.counter - 1,
       };
+    case "increase":
+      return {
+        counter: state.counter + (+payload),
+      };
 
     default:
       return state;
   }
 };
 
-const store = createStore(counterReducer);
 
-export default store;
+export default createStore(counterReducer);
