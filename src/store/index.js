@@ -1,11 +1,12 @@
+// rxslice
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+// counter Slice
 const initialCounterState = {
   counter: 0,
   showCounter: true,
 };
 
-// rxslice
 const counterSlice = createSlice({
   name: "counter",
   initialState: initialCounterState,
@@ -25,12 +26,33 @@ const counterSlice = createSlice({
   },
 });
 
+// Auth Slice
+const initialAuthState = {
+  authenthication: false,
+};
+
+const authSlice = createSlice({
+  name: "Auth",
+  initialState: initialAuthState,
+  reducers: {
+    login(state) {
+      state.authenthication = true;
+    },
+    logout(state) {
+      state.authenthication = false;
+    },
+  },
+});
+
+// configuration Store
 const store = configureStore({
   reducer: {
-    counter: counterSlice.reducer
+    counter: counterSlice.reducer,
+    auth: authSlice.reducer,
   },
 });
 
 export const counterActions = counterSlice.actions;
+export const authActions = authSlice.actions;
 
 export default store;
