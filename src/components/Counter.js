@@ -4,8 +4,8 @@ import classes from "./Counter.module.scss";
 
 const Counter = () => {
   // uss
-  const counter = useSelector((state) => state.counter);
-  const show = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const show = useSelector((state) => state.counter.showCounter);
   // usdf
   const dispatch = useDispatch();
 
